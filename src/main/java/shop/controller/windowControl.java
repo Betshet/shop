@@ -6,6 +6,7 @@ import shop.model.Aisle;
 import shop.model.Article;
 import shop.view.AisleWindow;
 import shop.view.DetailWindow;
+import shop.view.HomepageWindow;
 import shop.view.ShopWindow;
 
 public class windowControl {
@@ -32,6 +33,11 @@ public static void launchShopWindow() {
 		
 		DetailWindow detailWindow = new DetailWindow(article);
 		detailWindow.afficher();
+	}
+	public static void launchHomepageWindow() {
+		
+		HomepageWindow homepageWindow = new HomepageWindow();
+		homepageWindow.afficher();
 	}
 
 	
