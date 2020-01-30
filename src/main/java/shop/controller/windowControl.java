@@ -6,6 +6,7 @@ import shop.model.Aisle;
 import shop.model.Article;
 import shop.view.AisleWindow;
 import shop.view.DetailWindow;
+import shop.view.ShopWindow;
 
 public class windowControl {
 	public windowControl() {
@@ -18,6 +19,13 @@ public class windowControl {
 		ArrayList<Article> buffer = DAOArticle.findArticles(aisle);
 		AisleWindow aisleWindow = new AisleWindow(buffer);
 		aisleWindow.afficher();
+	}
+	
+public static void launchShopWindow() {
+		
+		ArrayList<Aisle> buffer = DAOAisle.getAllAisles();
+		ShopWindow shopWindow = new ShopWindow(buffer);
+		shopWindow.afficher();
 	}
 	
 	public static void launchDetailWindow(Article article) {
