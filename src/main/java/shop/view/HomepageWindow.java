@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import shop.controller.DAOAuthentification;
@@ -24,7 +25,7 @@ public class HomepageWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField passwordField;
 
 	
 	/**
@@ -47,14 +48,14 @@ public class HomepageWindow extends JFrame {
 		
 		JLabel lblPassword = new JLabel("Password");
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		passwordField = new JPasswordField(10);
+		passwordField.setColumns(10);
 		
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DAOAuthentification daoAuth = new DAOAuthentification();
-				User checkAuth = daoAuth.checkAuth(textField.getText(),textField_1.getText());
+				User checkAuth = daoAuth.checkAuth(textField.getText(),passwordField.getText());
 				if(checkAuth != null) {
 					if(checkAuth.isManager())
 						windowControl.launchShopWindow();
@@ -94,7 +95,7 @@ public class HomepageWindow extends JFrame {
 								.addComponent(lblUsername)
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 									.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+									.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(157)
 							.addComponent(lblShopHomepage)))
@@ -117,7 +118,7 @@ public class HomepageWindow extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(lblPassword)
 					.addGap(11)
-					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnSignIn)
