@@ -8,6 +8,12 @@ import org.junit.Test;
 
 import shop.controller.DAOAisle;
 
+/**
+ * 
+ * @author Pierre Pallier, Romain Bachelier
+ * Test class for DAOAisle class.
+ *
+ */
 public class DAOAisleTest {
 	
 	

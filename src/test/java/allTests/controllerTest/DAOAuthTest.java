@@ -14,7 +14,12 @@ import shop.controller.DAOAuthentification;
 import shop.controller.HashSalting;
 import shop.model.User;
 
-
+/**
+ * 
+ * @author Pierre Pallier, Romain Bachelier
+ * Test class for DAOAuthentification class.
+ *
+ */
 public class DAOAuthTest {
 	
 	DAOAuthentification authSpy = Mockito.spy(DAOAuthentification.class);

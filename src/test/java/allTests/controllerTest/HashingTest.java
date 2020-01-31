@@ -8,6 +8,12 @@ import org.junit.Test;
 
 import shop.controller.HashSalting;
 
+/**
+ * 
+ * @author Pierre Pallier, Romain Bachelier
+ * Test class for HashSalting class.
+ *
+ */
 public class HashingTest {
 	
 	@Test
