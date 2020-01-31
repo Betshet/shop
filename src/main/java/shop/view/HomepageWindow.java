@@ -1,5 +1,4 @@
 package shop.view;
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,6 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import shop.controller.DAOAuthentification;
+import shop.controller.windowControl;
+import shop.model.Aisle;
+import shop.model.User;
 
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
@@ -24,13 +26,12 @@ public class HomepageWindow extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 
-	public DAOAuthentification daoAuth;
 	
 	/**
 	 * Create the frame.
 	 */
 	public HomepageWindow() {
-		daoAuth = new DAOAuthentification();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 300);
 		contentPane = new JPanel();
@@ -52,7 +53,30 @@ public class HomepageWindow extends JFrame {
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int checkAuth = daoAuth.checkAuth(textField.getText(),textField_1.getText());
+				DAOAuthentification daoAuth = new DAOAuthentification();
+				User checkAuth = daoAuth.checkAuth(textField.getText(),textField_1.getText());
+				if(checkAuth != null) {
+					windowControl.launchArticleWindow(checkAuth.getAisle());
+				}
+				else {
+					@SuppressWarnings("unused")
+					ErrorPopup err = new ErrorPopup("Authentification failed");
+				}
+			}
+		});
+		
+		JButton btnSignIn = new JButton("Sign in");
+		btnSignIn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SignInPopup popup = new SignInPopup();
+				DAOAuthentification daoAuth = new DAOAuthentification();
+				
+				try {
+					daoAuth.signIn(popup.getTextField().getText(),popup.getTextField_1().getText(),(Aisle)popup.getComboBox().getSelectedItem(),popup.getChckbxManager().isSelected());
+				} catch (Exception e1) {
+					@SuppressWarnings("unused")
+					ErrorPopup err = new ErrorPopup("Error");
+				}
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -73,9 +97,10 @@ public class HomepageWindow extends JFrame {
 							.addComponent(lblShopHomepage)))
 					.addContainerGap(130, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(161, Short.MAX_VALUE)
+					.addContainerGap(164, Short.MAX_VALUE)
 					.addComponent(btnConfirm)
-					.addGap(142))
+					.addGap(74)
+					.addComponent(btnSignIn))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -91,7 +116,9 @@ public class HomepageWindow extends JFrame {
 					.addGap(11)
 					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-					.addComponent(btnConfirm)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnSignIn)
+						.addComponent(btnConfirm))
 					.addContainerGap())
 		);
 		contentPane.setLayout(gl_contentPane);

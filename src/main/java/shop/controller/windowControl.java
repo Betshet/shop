@@ -11,24 +11,20 @@ import shop.view.ShopWindow;
 
 public class windowControl {
 	
-	private static DAOAisle daoAisle;
-	private static DAOArticle daoArticle;
-	
 	public windowControl() {
-		daoAisle = new DAOAisle();
-		daoArticle = new DAOArticle();
 	}
 	
 
 	public static void launchArticleWindow(Aisle aisle) {
 		
+		DAOArticle daoArticle = new DAOArticle();
 		ArrayList<Article> buffer = daoArticle.findArticles(aisle);
 		AisleWindow aisleWindow = new AisleWindow(buffer);
 		aisleWindow.afficher();
 	}
 	
 public static void launchShopWindow() {
-		
+		DAOAisle daoAisle = new DAOAisle();
 		ArrayList<Aisle> buffer = daoAisle.getAllAisles();
 		ShopWindow shopWindow = new ShopWindow(buffer);
 		shopWindow.afficher();

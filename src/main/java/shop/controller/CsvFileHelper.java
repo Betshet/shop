@@ -3,6 +3,7 @@ package shop.controller;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -35,5 +36,18 @@ public class CsvFileHelper {
        fr.close();
 
        return result;
+   }
+   
+   public static void writeFile(File file, ArrayList<String> strList) throws IOException {
+	   FileWriter csvWriter = new FileWriter( file, true );
+	   csvWriter.append(System.getProperty( "line.separator" ));
+	   
+	   for(int i = 0; i<strList.size()-1; i++) {
+		   csvWriter.append(strList.get(i));
+		   csvWriter.append(",");
+	   }
+	   csvWriter.append(strList.get( strList.size()-1 ));
+	   csvWriter.flush();
+	   csvWriter.close();
    }
 }

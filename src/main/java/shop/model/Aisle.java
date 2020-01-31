@@ -31,4 +31,9 @@ public class Aisle {
 	public void setArticleList(ArrayList<Article> articleList) {
 		this.articleList = articleList;
 	}
+	
+	@Override
+	public String toString() {
+		return this.getId()+" - "+this.getName();
+	}
 }

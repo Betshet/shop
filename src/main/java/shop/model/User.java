@@ -4,12 +4,14 @@ public class User {
 
 	private String username;
 	private String hashPassword;
-	private int aisleID;
+	private Aisle aisle;
+	private boolean manager;
 	
-	public User(String username, String hashPassword, int aisleID) {
+	public User(String username, String hashPassword, Aisle aisle, boolean manager) {
 		this.username = username;
 		this.hashPassword = hashPassword;
-		this.aisleID = aisleID;
+		this.setAisle(aisle);
+		this.setManager(manager);
 	}
 
 	public String getUsername() {
@@ -20,10 +22,6 @@ public class User {
 		return hashPassword;
 	}
 
-	public int getAisleID() {
-		return aisleID;
-	}
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -32,7 +30,19 @@ public class User {
 		this.hashPassword = hashPassword;
 	}
 
-	public void setAisleID(int aisleID) {
-		this.aisleID = aisleID;
+	public boolean isManager() {
+		return manager;
+	}
+
+	public void setManager(boolean manager) {
+		this.manager = manager;
+	}
+
+	public Aisle getAisle() {
+		return aisle;
+	}
+
+	public void setAisle(Aisle aisle) {
+		this.aisle = aisle;
 	}
 }

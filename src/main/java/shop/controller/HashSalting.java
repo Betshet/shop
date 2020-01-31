@@ -1,21 +1,21 @@
 package shop.controller;
 
-import java.security.SecureRandom;
-import java.security.spec.KeySpec;
-
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 
 
 public class HashSalting {
 	
 	public static String getSaltedHash(String password) throws Exception {
-		SecureRandom random = new SecureRandom();
-		byte[] salt = new byte[16];
-		random.nextBytes(salt);
-		KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
-		SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-		byte[] hash = factory.generateSecret(spec).getEncoded();
-		return new String(hash);
+		
+		
+		MessageDigest md = MessageDigest.getInstance("SHA-512");
+		byte[] messageDigest = md.digest(password.getBytes());
+		BigInteger no = new BigInteger(1, messageDigest);
+		String hashtext = no.toString(16);
+		while (hashtext.length() < 32) {
+		    hashtext = "0" + hashtext;
+		}
+		return hashtext;
     }
 }
