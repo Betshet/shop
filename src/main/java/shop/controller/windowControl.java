@@ -27,7 +27,7 @@ public class windowControl {
 		aisleWindow.afficher();
 	}
 	
-public static void launchShopWindow() {
+	public static void launchShopWindow() {
 		
 		ArrayList<Aisle> buffer = daoAisle.getAllAisles();
 		ShopWindow shopWindow = new ShopWindow(buffer);
