@@ -17,21 +17,11 @@ import shop.model.User;
 
 public class DAOAuthTest {
 	
-	//private DAOAuthentification daoAuth = new DAOAuthentification();
-	
 	DAOAuthentification authSpy = Mockito.spy(DAOAuthentification.class);
 
 	User userMock = Mockito.mock(User.class);
 	
 	ArrayList<User> userList = new ArrayList<User>();
-	
-	@Test
-	/**
-	 * Checks that correct Users are returned while using the getAllUsers method.
-	 */
-	public void allUsersAreFound() {
-		//need a testing .csv file
-	}
 	
 	@Test
 	/**
@@ -42,10 +32,12 @@ public class DAOAuthTest {
 		Mockito.doReturn(userList).when(authSpy).getAllUsers();
 		Mockito.when(userMock.getUsername()).thenReturn("test");
 		Mockito.when(userMock.getHashPassword()).thenReturn(HashSalting.getSaltedHash("test"));
-		assertEquals(1,authSpy.checkAuth("test","test"));
-		assertEquals(0,authSpy.checkAuth("test","noTest"));
-		assertEquals(0,authSpy.checkAuth("noTest","noTest"));
-		assertEquals(0,authSpy.checkAuth("noTest","test"));
-		assertEquals(0,authSpy.checkAuth("",""));
+		
+		assertEquals(userMock,authSpy.checkAuth("test","test"));
+		assertEquals(null,authSpy.checkAuth("test","noTest"));
+		assertEquals(null,authSpy.checkAuth("noTest","noTest"));
+		assertEquals(null,authSpy.checkAuth("noTest","test"));
+		assertEquals(null,authSpy.checkAuth("",""));
 	}
+	
 }
