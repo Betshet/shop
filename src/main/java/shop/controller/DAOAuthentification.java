@@ -1,5 +1,6 @@
 package shop.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -34,7 +35,28 @@ public class DAOAuthentification {
 		}
 		return userList;
 	}
-
+	
+	public User getUserByName(String name) {
+		ArrayList<String> reading = new ArrayList<String>();
+		try {
+			reading = CsvFileHelper.readFile( CsvFileHelper.getResource("src\\main\\resources\\authentification.csv"));
+		} catch (IOException e) {
+			System.out.println("User file not found");
+		}
+		DAOAisle daoAisle = new DAOAisle();
+		for(String i : reading) {
+			String[] buff = i.split(",");
+			if(name.equals(buff[0])) {
+				boolean boolbuff;
+				if(buff[3] =="1") boolbuff = true;
+				else boolbuff = false;
+				return new User(buff[0],buff[1],daoAisle.getAisleById(Integer.parseInt(buff[2])),boolbuff);
+			}
+		}
+		return null;
+		
+	}
+	
 	public User checkAuth(String username, String password) {
 		
 			ArrayList<User> userList = getAllUsers();
@@ -65,7 +87,26 @@ public class DAOAuthentification {
 		if(manager)	usr.add("1");
 		else usr.add("0");
 		try {
-			CsvFileHelper.writeFile(CsvFileHelper.getResource("src\\main\\resources\\authentification.csv"), usr);
+			CsvFileHelper.writeFile(CsvFileHelper.getResource("src\\main\\resources\\authentification.csv"), usr, true);
+		} catch (IOException e) {
+			@SuppressWarnings("unused")
+			ErrorPopup err = new ErrorPopup("Error");
+		}
+	}
+	
+	public void deleteUser(User usr) {
+		try {
+			File file = CsvFileHelper.getResource("src\\main\\resources\\authentification.csv");
+			ArrayList<String> reading = CsvFileHelper.readFile( file );
+			
+			for(int i = 0; i<reading.size(); i++) {
+				String[] buff = reading.get(i).split(",");
+				if(usr.getUsername().equals(buff[0])){
+					reading.remove(i);
+				}
+			}
+			CsvFileHelper.editFile(file, reading);
+			
 		} catch (IOException e) {
 			@SuppressWarnings("unused")
 			ErrorPopup err = new ErrorPopup("Error");

@@ -8,6 +8,7 @@ import shop.view.AisleWindow;
 import shop.view.DetailWindow;
 import shop.view.HomepageWindow;
 import shop.view.ShopWindow;
+import shop.view.UserWindow;
 
 public class windowControl {
 	
@@ -39,6 +40,14 @@ public static void launchShopWindow() {
 		
 		HomepageWindow homepageWindow = new HomepageWindow();
 		homepageWindow.afficher();
+	}
+
+
+	public static void launchUserWindow() {
+		DAOAuthentification daoUser = new DAOAuthentification();
+		UserWindow userWindow = new UserWindow(daoUser.getAllUsers());
+		userWindow.afficher();
+		
 	}
 
 	

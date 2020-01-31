@@ -38,8 +38,8 @@ public class CsvFileHelper {
        return result;
    }
    
-   public static void writeFile(File file, ArrayList<String> strList) throws IOException {
-	   FileWriter csvWriter = new FileWriter( file, true );
+   public static void writeFile(File file, ArrayList<String> strList, boolean append) throws IOException {
+	   FileWriter csvWriter = new FileWriter( file, append );
 	   csvWriter.append(System.getProperty( "line.separator" ));
 	   
 	   for(int i = 0; i<strList.size()-1; i++) {
@@ -49,5 +49,17 @@ public class CsvFileHelper {
 	   csvWriter.append(strList.get( strList.size()-1 ));
 	   csvWriter.flush();
 	   csvWriter.close();
+   }
+   
+   public static void editFile(File file, ArrayList<String> strList) throws IOException {
+	   FileWriter csvWriter = new FileWriter( file );
+	   for(int i = 0;i<strList.size()-1 ; i++) {
+		   csvWriter.append(strList.get(i));
+		   csvWriter.append(System.getProperty( "line.separator" ));
+	   }
+	   csvWriter.append(strList.get( strList.size()-1 ));
+	   csvWriter.flush();
+	   csvWriter.close();
+	   
    }
 }

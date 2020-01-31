@@ -16,6 +16,10 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JButton;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ShopWindow extends JFrame {
 
@@ -25,6 +29,7 @@ public class ShopWindow extends JFrame {
 	private JTable table;
 	
 	private DAOAisle daoAisle;
+	private JButton btnManageAccounts;
 	
 
 	/**
@@ -53,16 +58,28 @@ public class ShopWindow extends JFrame {
 		table = new JTable(model);
 		table.setAutoCreateRowSorter(true);
 		JScrollPane scrollPane = new JScrollPane(table);
+		
+		btnManageAccounts = new JButton("Manage accounts");
+		btnManageAccounts.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				windowControl.launchUserWindow();
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+				.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(btnManageAccounts)
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(186, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnManageAccounts)
+					.addContainerGap(73, Short.MAX_VALUE))
 		);
 
 

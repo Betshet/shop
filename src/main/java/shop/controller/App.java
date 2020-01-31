@@ -1,6 +1,5 @@
 package shop.controller;
 
-import java.io.IOException;
 
 public class App 
 {
