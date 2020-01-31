@@ -13,6 +13,12 @@ import shop.model.*;
 
 import static org.hamcrest.CoreMatchers.*;
 
+/**
+ * 
+ * @author Pierre Pallier, Romain Bachelier
+ * Test class for DAOArticle class.
+ *
+ */
 public class DAOArticlesTest {
 	
 	private DAOAisle aisle = new DAOAisle();

@@ -9,7 +9,12 @@ import org.junit.Test;
 
 import shop.controller.CsvFileHelper;
 
-
+/**
+ * 
+ * @author Pierre Pallier, Romain Bachelier
+ * Test class for CsvFileHelper class.
+ *
+ */
 public class CsvFileHelperTest {
 	
 	private String path = "src\\test\\resources\\aisles.csv";
