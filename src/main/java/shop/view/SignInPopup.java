@@ -17,7 +17,7 @@ public class SignInPopup extends JPanel{
 	
 	
 
-	public SignInPopup() 
+	public SignInPopup(String msg) 
 	{
 		JLabel lblUsername = new JLabel("Username");
 		
@@ -74,7 +74,7 @@ public class SignInPopup extends JPanel{
 		JOptionPane.showConfirmDialog(
 				null,
 				this,
-                "Sign in",
+                msg,
                 JOptionPane.PLAIN_MESSAGE,
                 JOptionPane.PLAIN_MESSAGE
                 );

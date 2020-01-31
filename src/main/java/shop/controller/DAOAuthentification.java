@@ -112,4 +112,24 @@ public class DAOAuthentification {
 			ErrorPopup err = new ErrorPopup("Error");
 		}
 	}
+
+	public void editUser(User usr1, User usr2) throws Exception {
+		try {
+			File file = CsvFileHelper.getResource("src\\main\\resources\\authentification.csv");
+			ArrayList<String> reading = CsvFileHelper.readFile( file );
+			
+			for(int i = 0; i<reading.size(); i++) {
+				String[] buff = reading.get(i).split(",");
+				if(usr1.getUsername().equals(buff[0])){
+					reading.remove(i);
+				}
+			}
+			CsvFileHelper.editFile(file, reading);
+			signIn(usr2.getUsername(),usr2.getHashPassword(),usr2.getAisle(),usr2.isManager());
+		} catch (IOException e) {
+			@SuppressWarnings("unused")
+			ErrorPopup err = new ErrorPopup("Error");
+		}
+		
+	}
 }

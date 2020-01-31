@@ -72,7 +72,7 @@ public class HomepageWindow extends JFrame {
 		JButton btnSignIn = new JButton("Sign in");
 		btnSignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SignInPopup popup = new SignInPopup();
+				SignInPopup popup = new SignInPopup("Sign in");
 				DAOAuthentification daoAuth = new DAOAuthentification();
 				
 				try {

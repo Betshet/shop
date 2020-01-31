@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 import shop.controller.DAOAuthentification;
 import shop.controller.windowControl;
+import shop.model.Aisle;
 import shop.model.User;
 
 import javax.swing.GroupLayout;
@@ -27,6 +28,7 @@ public class UserWindow extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private JButton btnDelete;
+	private JButton btnEdit;
 	
 
 	/**
@@ -65,6 +67,22 @@ public class UserWindow extends JFrame {
 			}
 		});
 		
+		btnEdit = new JButton("Edit");
+		btnEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SignInPopup popup = new SignInPopup("Edit info");
+				DAOAuthentification daoUser = new DAOAuthentification();
+				try {
+					daoUser.editUser(daoUser.getUserByName((String) table.getModel().getValueAt(table.getSelectedRow(), 0)), new User(popup.getTextField().getText(),popup.getTextField_1().getText(),(Aisle)popup.getComboBox().getSelectedItem(),popup.getChckbxManager().isSelected() ));
+					dispose();
+					windowControl.launchUserWindow();
+				} catch (Exception e1) {
+					@SuppressWarnings("unused")
+					ErrorPopup err = new ErrorPopup("Error");
+				}
+			}
+		});
+		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -72,14 +90,18 @@ public class UserWindow extends JFrame {
 				.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(btnDelete)
-					.addContainerGap())
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnEdit)
+					.addGap(614))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnDelete)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnDelete)
+						.addComponent(btnEdit))
 					.addContainerGap(73, Short.MAX_VALUE))
 		);
 
