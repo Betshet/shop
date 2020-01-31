@@ -56,7 +56,10 @@ public class HomepageWindow extends JFrame {
 				DAOAuthentification daoAuth = new DAOAuthentification();
 				User checkAuth = daoAuth.checkAuth(textField.getText(),textField_1.getText());
 				if(checkAuth != null) {
-					windowControl.launchArticleWindow(checkAuth.getAisle());
+					if(checkAuth.isManager())
+						windowControl.launchShopWindow();
+					else
+						windowControl.launchArticleWindow(checkAuth.getAisle());
 				}
 				else {
 					@SuppressWarnings("unused")

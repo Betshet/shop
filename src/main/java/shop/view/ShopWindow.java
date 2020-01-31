@@ -51,6 +51,7 @@ public class ShopWindow extends JFrame {
 		};
 		
 		table = new JTable(model);
+		table.setAutoCreateRowSorter(true);
 		JScrollPane scrollPane = new JScrollPane(table);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
