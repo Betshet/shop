@@ -7,7 +7,11 @@ import shop.model.User;
 
 public class DAOAuthentification {
 	
-	public static ArrayList<User>  getAllUsers(){
+	public DAOAuthentification() {
+		
+	}
+	
+	public ArrayList<User>  getAllUsers(){
 		
 		ArrayList<User> userList = new ArrayList<User>();
 		ArrayList<String> reading = new ArrayList<String>();
@@ -23,7 +27,7 @@ public class DAOAuthentification {
 		return userList;
 	}
 
-	public static int checkAuth(String username, String password) {
+	public int checkAuth(String username, String password) {
 			
 		try {
 			ArrayList<User> userList = getAllUsers();

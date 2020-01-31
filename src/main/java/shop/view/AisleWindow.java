@@ -24,11 +24,13 @@ public class AisleWindow extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	
+	private DAOArticle daoArticle;
 
 	/**
 	 * Create the frame.
 	 */
 	public AisleWindow(List<Article> articleList) {
+		daoArticle = new DAOArticle();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 800, 400);
 		contentPane = new JPanel();
@@ -66,7 +68,7 @@ public class AisleWindow extends JFrame {
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 	        public void valueChanged(ListSelectionEvent event) {
 	        	if(!event.getValueIsAdjusting()) {
-		            windowControl.launchDetailWindow(DAOArticle.getArticleById((Integer) table.getValueAt(table.getSelectedRow(), 0)));
+		            windowControl.launchDetailWindow(daoArticle.getArticleById((Integer) table.getValueAt(table.getSelectedRow(), 0)));
 	        	}
 	        }
 	    });

@@ -8,7 +8,11 @@ import shop.model.Article;
 
 public class DAOArticle {
 	
-	public static ArrayList<Article> findArticles(Aisle aisle) {
+	public DAOArticle() {
+		
+	}
+	
+	public ArrayList<Article> findArticles(Aisle aisle) {
 		ArrayList<Article> articleList = new ArrayList<Article>();
 		ArrayList<String> reading = new ArrayList<String>();
 		try {
@@ -31,7 +35,7 @@ public class DAOArticle {
 		return articleList;
 	}
 	
-	public static Article getArticleById(int id) {
+	public Article getArticleById(int id) {
 		ArrayList<String> reading = new ArrayList<String>();
 		try {
 			reading = CsvFileHelper.readFile( CsvFileHelper.getResource("src\\main\\resources\\articles.csv"));

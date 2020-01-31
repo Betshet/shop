@@ -1,5 +1,7 @@
 package shop.controller;
 
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Hello world!
@@ -7,7 +9,7 @@ package shop.controller;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws IOException
     {
     	windowControl.launchHomepageWindow();
     }

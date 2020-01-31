@@ -7,7 +7,12 @@ import shop.model.Aisle;
 
 public class DAOAisle {
 	
-	public static ArrayList<Aisle> getAllAisles() {
+	public DAOAisle()
+	{
+		
+	}
+	
+	public ArrayList<Aisle> getAllAisles() {
 		ArrayList<Aisle> aisleList = new ArrayList<Aisle>();
 		ArrayList<String> reading = new ArrayList<String>();
 		try {
@@ -22,7 +27,7 @@ public class DAOAisle {
 		return aisleList;
 	}
 	
-	public static Aisle getAisleById(int id) {
+	public Aisle getAisleById(int id) {
 		ArrayList<String> reading = new ArrayList<String>();
 		try {
 			reading = CsvFileHelper.readFile( CsvFileHelper.getResource("src\\main\\resources\\aisles.csv"));

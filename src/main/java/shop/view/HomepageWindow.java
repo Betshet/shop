@@ -24,10 +24,13 @@ public class HomepageWindow extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 
+	public DAOAuthentification daoAuth;
+	
 	/**
 	 * Create the frame.
 	 */
 	public HomepageWindow() {
+		daoAuth = new DAOAuthentification();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 300);
 		contentPane = new JPanel();
@@ -49,7 +52,7 @@ public class HomepageWindow extends JFrame {
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int checkAuth = DAOAuthentification.checkAuth(textField.getText(),textField_1.getText());
+				int checkAuth = daoAuth.checkAuth(textField.getText(),textField_1.getText());
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
