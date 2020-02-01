@@ -63,6 +63,7 @@ public class DetailWindow extends JFrame {
 					 
 						daoArticle.editStock(article, value);
 					} catch (Exception e1) {
+						@SuppressWarnings("unused")
 						ErrorPopup err = new ErrorPopup("Invalid value");
 					}
 					

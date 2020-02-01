@@ -82,7 +82,7 @@ public class HomepageWindow extends JFrame {
 					daoAuth.signIn(popup.getTextField().getText(),popup.getTextField_1().getText(),(Aisle)popup.getComboBox().getSelectedItem(),popup.getChckbxManager().isSelected());
 				} catch (Exception e1) {
 					@SuppressWarnings("unused")
-					ErrorPopup err = new ErrorPopup("Error");
+					ErrorPopup err = new ErrorPopup("Username already in use");
 				}
 			}
 		});

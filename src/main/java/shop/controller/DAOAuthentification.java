@@ -109,6 +109,12 @@ public class DAOAuthentification {
 	 */
 	public void signIn(String username, String password, Aisle aisle, boolean manager) throws Exception
 	{
+		ArrayList<User> usrList = getAllUsers();
+		for(User u : usrList) {
+			if(u.getUsername().equals(username)) {
+				throw new Exception();
+			}
+		}
 		ArrayList<String> usr = new ArrayList<String>();
 		
 		usr.add(username);
