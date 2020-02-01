@@ -1,9 +1,14 @@
-1,Les iserables,29.99,books,Athor/Publisher,10
-4,Les iserables,29.99,books,Athor/Publisher,10
-5,Les iserables,29.99,books,Athor/Publisher,10
-9,Les iserables,29.99,books,Athor/Publisher,10
-11,Les iserables,29.99,books,Athor/Publisher,12
-25,jacket,29.99,clothes,Athor/Publisher,10
-26,Les iserables,29.99,clothes,Athor/Publisher,12
-25,jacket,29.99,music,Athor/Publisher,10
-26,Les iserables,29.99,music,Athor/Publisher,12
+1,The Lord of the Flies,20.00,Books,Author : William Golding/Publisher : Hachette,5
+2,C/C++ for Dummies,29.99,Books,Author : Dummies/Publisher : Dummies,2
+3,50 Shades of Pasta,15.80,Books,Athor : J.J Noodles/Publisher : Macaroni Editions,5
+4,Fashion & You,24.99,Books,Athor : Karl Lagarfeld/Publisher : Dior Editions,10
+6,Jacket,80.00,Clothes,Black,10
+7,Hat,29.99,Clothes,White,12
+8,Guitar,300.00,Music,Gibson,1
+9,Guitar,450.00,Music,Gibson,1
+10,Drumset,1000.00,Music,Roland,2
+11,Bass,299.00,Music,Fender,2
+12,Triangle,200.00,Music, ,4
+13,Call of Duty,60.00,Video games,Publisher : Activision,50
+14,Maio Odyssey,55.00,Video games,Publisher : Nintendo,87
+5,Shoes,59.99,Clothes,Blue & Black / Nike,4
