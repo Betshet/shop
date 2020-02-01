@@ -59,7 +59,7 @@ public class DetailWindow extends JFrame {
 				try {
 					DAOArticle daoArticle = new DAOArticle();
 					int value = Integer.parseInt(popup.getTextField().getText());
-					//if(value < 0) throw new Exception(); 
+					if(value < 0) throw new Exception(); 
 					 
 						daoArticle.editStock(article, value);
 					} catch (Exception e1) {
