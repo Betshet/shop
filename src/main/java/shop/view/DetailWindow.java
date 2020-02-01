@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import shop.controller.DAOArticle;
 import shop.model.Article;
 
 import javax.swing.JButton;
@@ -13,7 +14,10 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
+/**
+ * Class DetailWindow
+ * Displays the id, name, price, stock, and description of an article.
+ */
 public class DetailWindow extends JFrame {
 
 
@@ -23,7 +27,7 @@ public class DetailWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DetailWindow(Article article) {
+	public DetailWindow(final Article article) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -47,6 +51,24 @@ public class DetailWindow extends JFrame {
 		JLabel label_3 = new JLabel(Float.toString(article.getPrice()));
 		
 		JButton btnOrderMore = new JButton("Order more");
+		
+		JButton btnEditStock = new JButton("Edit stock");
+		btnEditStock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				StockPopup popup = new StockPopup();
+				try {
+					DAOArticle daoArticle = new DAOArticle();
+					int value = Integer.parseInt(popup.getTextField().getText());
+					//if(value < 0) throw new Exception(); 
+					 
+						daoArticle.editStock(article, value);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -57,7 +79,7 @@ public class DetailWindow extends JFrame {
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(lblArticleName)
-									.addPreferredGap(ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED, 316, Short.MAX_VALUE)
 									.addComponent(lblStock))
 								.addComponent(label)
 								.addComponent(lblDescription)
@@ -67,8 +89,10 @@ public class DetailWindow extends JFrame {
 								.addComponent(label_3, Alignment.TRAILING))
 							.addContainerGap())
 						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addComponent(btnEditStock)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(btnOrderMore)
-							.addGap(159))))
+							.addGap(122))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -90,8 +114,10 @@ public class DetailWindow extends JFrame {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(label_1))
 						.addComponent(label_2))
-					.addPreferredGap(ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-					.addComponent(btnOrderMore)
+					.addPreferredGap(ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnOrderMore)
+						.addComponent(btnEditStock))
 					.addContainerGap())
 		);
 		contentPane.setLayout(gl_contentPane);

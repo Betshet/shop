@@ -1,12 +1,37 @@
 package shop.model;
-
+/**
+ * Class User
+ * A user.
+ */
 public class User {
-
+	/**
+	 * Private attribute username
+	 * Username of the user.
+	 */
 	private String username;
+	/**
+	 * Private attribute hashPassword
+	 * Hashed password of the user.
+	 */
 	private String hashPassword;
+	/**
+	 * Private attribute aisle
+	 * Aisle of the user.
+	 */
 	private Aisle aisle;
+	/**
+	 * Private attribute manager
+	 * Indicates if the user is manager.
+	 */
 	private boolean manager;
 	
+	/**
+	 * Constructor
+	 * @param username
+	 * @param hashPassword
+	 * @param aisle
+	 * @param manager
+	 */
 	public User(String username, String hashPassword, Aisle aisle, boolean manager) {
 		this.username = username;
 		this.hashPassword = hashPassword;

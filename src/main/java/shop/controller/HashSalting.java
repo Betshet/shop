@@ -3,9 +3,19 @@ package shop.controller;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
-
+/**
+ * Class HashSalting
+ * Used to hash text.
+ */
 public class HashSalting {
 	
+	/**
+	 * Static method getSaltedHash
+	 * Hashes a given string.
+	 * @param password
+	 * @return the hashed text.
+	 * @throws Exception
+	 */
 	public static String getSaltedHash(String password) throws Exception {
 		
 		

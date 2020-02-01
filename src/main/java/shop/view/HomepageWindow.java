@@ -19,10 +19,13 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+/**
+ * Class HomepageWindow
+ * Homepage of the app. Allows the user to enter their account information.
+ */
 public class HomepageWindow extends JFrame {
 
-
-	private static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField passwordField;

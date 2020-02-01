@@ -20,7 +20,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * Class UserWindow
+ * Displays the informations about the users in a given list.
+ */
 public class UserWindow extends JFrame {
 
 
@@ -33,6 +36,7 @@ public class UserWindow extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param userList
 	 */
 	public UserWindow(ArrayList<User> userList) {
 		
@@ -115,7 +119,13 @@ public class UserWindow extends JFrame {
 	{
 		setVisible(true);
 	}
-
+	
+	/**
+	 * Method convert
+	 * Converts a User List to an Object matrix.
+	 * @param userList
+	 * @return Object matrix containing the users informations.
+	 */
 	public Object[][] convert(List<User> userList){
 		Object[][] obj = new Object[userList.size()][3];
 		for(int i = 0; i < userList.size(); i++) {

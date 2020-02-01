@@ -20,7 +20,11 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * Class ShopWindow
+ * Displays all the id and name of all aisles in a given list.
+ *
+ */
 public class ShopWindow extends JFrame {
 
 
@@ -34,6 +38,7 @@ public class ShopWindow extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param aisleList
 	 */
 	public ShopWindow(List<Aisle> aisleList) {
 		daoAisle = new DAOAisle();
@@ -98,7 +103,12 @@ public class ShopWindow extends JFrame {
 	{
 		setVisible(true);
 	}
-
+	/**
+	 * Method convert
+	 * Converts a List of aisles in an object matrix.
+	 * @param aisleList
+	 * @return Object matrix containing the aisle information.
+	 */
 	public Object[][] convert(List<Aisle> aisleList){
 		Object[][] obj = new Object[aisleList.size()][3];
 		for(int i = 0; i < aisleList.size(); i++) {

@@ -7,13 +7,21 @@ import java.util.ArrayList;
 import shop.model.Aisle;
 import shop.model.User;
 import shop.view.ErrorPopup;
-
+/**
+ * Class DAOAuthentification
+ * Controller used to access data about the users. 
+ */
 public class DAOAuthentification {
 	
 	public DAOAuthentification() {
 		
 	}
 	
+	/**
+	 * Method getAllUsers
+	 * Gets all the users in the user file.
+	 * @return ArrayList<User> 
+	 */
 	public ArrayList<User>  getAllUsers(){
 		
 		ArrayList<User> userList = new ArrayList<User>();
@@ -36,6 +44,12 @@ public class DAOAuthentification {
 		return userList;
 	}
 	
+	/**
+	 * Methode getUserByName
+	 * Gets a user using the given name.
+	 * @param name
+	 * @return User
+	 */
 	public User getUserByName(String name) {
 		ArrayList<String> reading = new ArrayList<String>();
 		try {
@@ -57,6 +71,13 @@ public class DAOAuthentification {
 		
 	}
 	
+	/**
+	 * Method checkAuth
+	 * Checks if the given username and password are correct.
+	 * @param username
+	 * @param password
+	 * @return User : null if the given data is incorrect.
+	 */
 	public User checkAuth(String username, String password) {
 		
 			ArrayList<User> userList = getAllUsers();
@@ -77,6 +98,15 @@ public class DAOAuthentification {
 		
 	}
 	
+	/**
+	 * Method signIn
+	 * Adds a user to the user file using the information given.
+	 * @param username
+	 * @param password
+	 * @param aisle
+	 * @param manager
+	 * @throws Exception
+	 */
 	public void signIn(String username, String password, Aisle aisle, boolean manager) throws Exception
 	{
 		ArrayList<String> usr = new ArrayList<String>();
@@ -94,6 +124,11 @@ public class DAOAuthentification {
 		}
 	}
 	
+	/**
+	 * Method deleteUser
+	 * Removes a user from the user file.
+	 * @param usr
+	 */
 	public void deleteUser(User usr) {
 		try {
 			File file = CsvFileHelper.getResource("src\\main\\resources\\authentification.csv");
@@ -113,6 +148,13 @@ public class DAOAuthentification {
 		}
 	}
 
+	/**
+	 * Method editUser
+	 * Edits a user's information.
+	 * @param usr1
+	 * @param usr2
+	 * @throws Exception
+	 */
 	public void editUser(User usr1, User usr2) throws Exception {
 		try {
 			File file = CsvFileHelper.getResource("src\\main\\resources\\authentification.csv");

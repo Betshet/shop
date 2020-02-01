@@ -17,7 +17,10 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
+/**
+ * Class AisleWindow
+ * Displays the id, name, price and stock of the articles in an aisle
+ */
 public class AisleWindow extends JFrame {
 
 
@@ -83,6 +86,11 @@ public class AisleWindow extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Converts an article List to an Object matrix
+	 * @param articleList
+	 * @return object matrix containing the articles information
+	 */
 	public Object[][] convert(List<Article> articleList){
 		Object[][] obj = new Object[articleList.size()][4];
 		for(int i = 0; i < articleList.size(); i++) {

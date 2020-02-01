@@ -6,17 +6,39 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import shop.controller.DAOAisle;
 import shop.model.Aisle;
-
+/**
+ * CLass SignInPopup
+ * Popup allowing the user to enter the information for a new account.
+ */
 public class SignInPopup extends JPanel{
 
 	private static final long serialVersionUID = 1L;
+	/**
+	 * private attribute textField
+	 * Text field for the account username.
+	 */
 	private JTextField textField;
+	/**
+	 * private attribute textField_1
+	 * Text field for the account password.
+	 */
 	private JTextField textField_1;
+	/**
+	 * private attribute comboBox
+	 * Drop-down list of all aisles.
+	 */
 	private JComboBox<Aisle> comboBox;
+	/**
+	 * private attribute chckbxManager
+	 * Checkbox to make a manager account.
+	 */
 	private JCheckBox chckbxManager;
 	
 	
-
+	/**
+	 * Creates and displays the frame.
+	 * @param msg
+	 */
 	public SignInPopup(String msg) 
 	{
 		JLabel lblUsername = new JLabel("Username");
