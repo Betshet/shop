@@ -26,9 +26,9 @@ public class DAOAisleTest {
 	 */
 	public void allAislesFound() throws IOException {
 		assertEquals(daoAisle.getAllAisles().get(0).getId(),1);
-		assertEquals(daoAisle.getAllAisles().get(0).getName(),"clothes");
+		assertEquals(daoAisle.getAllAisles().get(0).getName(),"Clothes");
 		assertEquals(daoAisle.getAllAisles().get(1).getId(),2);
-		assertEquals(daoAisle.getAllAisles().get(1).getName(),"books");
+		assertEquals(daoAisle.getAllAisles().get(1).getName(),"Books");
 	
 	}
 

@@ -32,9 +32,10 @@ public class DAOArticlesTest {
 		
 		ArrayList<Aisle> allAisles = aisle.getAllAisles();		
 		
-		assertEquals(daoArticle.findArticles(allAisles.get(0)).get(0).getId(),1);
-		assertEquals(daoArticle.findArticles(allAisles.get(0)).get(1).getId(),4);
 		assertEquals(daoArticle.findArticles(allAisles.get(0)).get(2).getId(),5);
+		assertEquals(daoArticle.findArticles(allAisles.get(0)).get(0).getId(),6);
+		assertEquals(daoArticle.findArticles(allAisles.get(0)).get(1).getId(),7);
+		
 	}
 	
 	
